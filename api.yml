@@ -1,0 +1,77 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Download_ms
+  description: Microservicio para descarga de archivos
+  license:
+    name: Versioning
+host: localhost:8005
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /donwloadlist:
+    get:
+      tags:
+      - "donwloadlist"
+      summary: "Lista de archivos que se pueden descargar"
+      description: ""
+      operationId: "List_arhives"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: file
+        description: "lista de archivos"
+        required: true
+        schema:
+          $ref: "/downloads"
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  /donwloadafile:
+    post:
+      tags:
+      - "donwloadfile"
+      summary: "archivo a descargar"
+      description: ""
+      operationId: "download_file"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: path
+        description: "path para descarga del archivo"
+        required: true
+        schema:
+          $ref: "/downloads/download"
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+definitions:
+  download:
+    type: object
+    properties:
+      path:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+        

@@ -1,0 +1,7 @@
+Django
+gunicorn
+djangorestframework
+djangorestframework-jwt
+pymysql
+flask 
+requests
