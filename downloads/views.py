@@ -110,6 +110,36 @@ def downloadfile(request):
 		response["X-sendFile"]= "SomeText.txt"
 		return response'''
 
+
+@api_view(['GET','POST'])
+def soap(request):
+	print(request.data)
+	if "owner" in request.data.keys():
+		a = request.data['owner']
+	else:
+		return Response({"bad request"},status=400)
+	print(a)
+	archives = []
+	posibles_archives = requests.get('http://192.168.99.101:2870/list')
+	#posibles_archives=requests.get('http://35.227.21.88:2870/list')
+	archive = posibles_archives.json()
+	keys = archive.keys()
+		
+	if keys:
+		newjson=encontrarowner(keys,archive,a)
+		print("newjson es ")
+		print(newjson)
+		try:
+			new_keys=newjson.keys()
+		except:
+			newjson = {}
+			new_keys = []
+		encontrarpath(new_keys, newjson, archives)
+		number=newjson.keys()
+		return Response(len(number), status=200)
+	else:
+		return Response({"error"}, status=404)
+
 def encontrarowner(keys,json,owner):
 	for i in keys:
 		if i == owner:
