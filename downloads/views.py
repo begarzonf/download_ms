@@ -30,7 +30,7 @@ def downloadList(request):
 		return Response({"bad request"},status=400)
 	print(a)
 	archives = []
-	posibles_archives = requests.get('http://192.168.99.101:2870/list')
+	posibles_archives = requests.get('http://file-controller-ms:2870/list')
 	#posibles_archives=requests.get('http://35.227.21.88:2870/list')
 	archive = posibles_archives.json()
 	keys = archive.keys()
@@ -120,7 +120,7 @@ def soap(request):
 		return Response({"bad request"},status=400)
 	print(a)
 	archives = []
-	posibles_archives = requests.get('http://192.168.99.101:2870/list')
+	posibles_archives = requests.get('http://file-controller-ms:2870/list')
 	#posibles_archives=requests.get('http://35.227.21.88:2870/list')
 	archive = posibles_archives.json()
 	keys = archive.keys()

@@ -9,6 +9,7 @@ services:
       - ./db/:/root/db/
 
   download_ms:
+    image: begarzonf/donwload_ms
     build: .
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8005"
     container_name: download_ms
