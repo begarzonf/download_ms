@@ -25,7 +25,7 @@ SECRET_KEY = 'i1j%^axrj8b%!!q^#&w1$guwm+ue-*toq3r=qtdfz!3yl(4=+('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.99.101', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.99.101', 'localhost', '127.0.0.1','download-ms']
 
 
 # Application definition
